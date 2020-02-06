@@ -1,9 +1,9 @@
-package com.jesusfc.springBoot2Test;
+package com.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com"})
 public class SpringBoot2TestApplication {
 
 	public static void main(String[] args) {
