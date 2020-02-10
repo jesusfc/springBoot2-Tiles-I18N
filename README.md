@@ -3,4 +3,4 @@
 - Jsp Pages, JSTL, JS, CSS 
 - Apache Tiles 3
 - Internationalization (I18N)
-- Log4j 
+- Log4j2 

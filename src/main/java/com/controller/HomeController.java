@@ -3,7 +3,8 @@ package com.controller;
 import com.constant.ViewConstants;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,8 +17,8 @@ public class HomeController extends CommonController {
 	 * Serial ID
 	 */
 	private static final long serialVersionUID = 8676754911006063199L;
-	Logger log = Logger.getLogger(HomeController.class);
-	
+	private static Logger log = LogManager.getLogger(HomeController.class);
+
 	@RequestMapping(value = "/" + ViewConstants.HOME_VIEW, method = RequestMethod.GET)
 	public ModelAndView goToHomeView() {
 		
