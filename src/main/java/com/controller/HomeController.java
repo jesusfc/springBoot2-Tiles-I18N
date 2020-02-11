@@ -17,9 +17,10 @@ public class HomeController extends CommonController {
 	 * Serial ID
 	 */
 	private static final long serialVersionUID = 8676754911006063199L;
+
 	private static Logger log = LogManager.getLogger(HomeController.class);
 
-	@RequestMapping(value = "/" + ViewConstants.HOME_VIEW, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/" + ViewConstants.HOME_VIEW}, method = RequestMethod.GET)
 	public ModelAndView goToHomeView() {
 		
 		ModelAndView modelAndView = new ModelAndView(ViewConstants.HOME_VIEW, "view",  ViewConstants.HOME_VIEW);		
