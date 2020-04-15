@@ -1,6 +1,7 @@
 package com.config;
 
 import java.util.Locale;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,82 +29,83 @@ hence it is required to tell Spring boot about how to render static content.
 @EnableWebMvc
 public class WebMvcConfig implements WebMvcConfigurer {
 
-  @Override
-  public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-    configurer.enable();
-  }
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 
-  @Override
-  public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-    registry.addResourceHandler("/js/*").addResourceLocations("/js/");
-    registry.addResourceHandler("/css/*").addResourceLocations("/css/");
-    registry.addResourceHandler("/images/*").addResourceLocations("/images/");
-  }
+    @Override
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/js/*").addResourceLocations("/js/");
+        registry.addResourceHandler("/css/*").addResourceLocations("/css/");
+        registry.addResourceHandler("/images/*").addResourceLocations("/images/");
+    }
 
-  /** **************************************** */
-  /** ****** APACHE TILES ******************** */
-  /** **************************************** */
+    /** **************************************** */
+    /** ****** APACHE TILES ******************** */
+    /** **************************************** */
 
-  /**
-   * Initialise Tiles on application startup and identify the location of the tiles configuration
-   * file, tiles.xml.
-   *
-   * @return tiles configurer
-   */
-  @Bean
-  public TilesConfigurer tilesConfigurer() {
+    /**
+     * Initialise Tiles on application startup and identify the location of the tiles configuration
+     * file, tiles.xml.
+     *
+     * @return tiles configurer
+     */
+    @Bean
+    public TilesConfigurer tilesConfigurer() {
 
-    final TilesConfigurer configurer = new TilesConfigurer();
-    String[] definitions =
-        new String[] {"/WEB-INF/defs/basesLayouts.xml", "/WEB-INF/defs/views.xml"};
-    configurer.setDefinitions(definitions);
-    configurer.setCheckRefresh(true);
+        final TilesConfigurer configurer = new TilesConfigurer();
+        String[] definitions = new String[]{"/WEB-INF/defs/basesLayouts.xml", "/WEB-INF/defs/views.xml"};
+        configurer.setDefinitions(definitions);
+        configurer.setCheckRefresh(true);
 
-    return configurer;
-  }
+        return configurer;
+    }
 
-  /**
-   * Introduce a Tiles view resolver, this is a convenience implementation that extends
-   * URLBasedViewResolver.
-   *
-   * @return tiles view resolver
-   */
-  @Bean
-  public TilesViewResolver tilesViewResolver() {
-    final TilesViewResolver resolver = new TilesViewResolver();
-    resolver.setViewClass(TilesView.class);
-    return resolver;
-  }
+    /**
+     * Introduce a Tiles view resolver, this is a convenience implementation that extends
+     * URLBasedViewResolver.
+     *
+     * @return tiles view resolver
+     */
+    @Bean
+    public TilesViewResolver tilesViewResolver() {
+        final TilesViewResolver resolver = new TilesViewResolver();
+        resolver.setViewClass(TilesView.class);
+        return resolver;
+    }
 
-  /** **************************************** */
-  /** ****** INTERNACIONALIZACION I18N ******* */
-  /** **************************************** */
-  @Bean
-  public MessageSource messageSource() {
-    ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-    messageSource.setBasename("classpath:i18n/messages");
-    messageSource.setDefaultEncoding("UTF-8");
-    return messageSource;
-  }
+    /** **************************************** */
+    /** ****** INTERNACIONALIZACION I18N ******* */
+    /**
+     * ***************************************
+     */
+    @Bean
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("classpath:i18n/messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
+    }
 
-  @Bean
-  public LocaleResolver localeResolver() {
-    SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-    localeResolver.setDefaultLocale(Locale.getDefault());
-    return localeResolver;
-  }
+    @Bean
+    public LocaleResolver localeResolver() {
+        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+        localeResolver.setDefaultLocale(Locale.getDefault());
+        return localeResolver;
+    }
 
-  @Bean
-  public LocaleChangeInterceptor localeChangeInterceptor() {
-    LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
-    localeInterceptor.setIgnoreInvalidLocale(true);
-    localeInterceptor.setParamName("lang");
-    return localeInterceptor;
-  }
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
+        localeInterceptor.setIgnoreInvalidLocale(true);
+        localeInterceptor.setParamName("lang");
+        return localeInterceptor;
+    }
 
-  @Override
-  public void addInterceptors(InterceptorRegistry registry) {
-    registry.addInterceptor(localeChangeInterceptor());
-  }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
 
 }
