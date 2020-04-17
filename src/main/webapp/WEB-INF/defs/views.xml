@@ -16,5 +16,9 @@
 	<definition name="jstlLibTest" extends="defaultTemplate">
 		<put-attribute name="body" value="/WEB-INF/pages/jstlLibTest.jsp" />
 	</definition>
-		
+
+	<definition name="javaVariosTest" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/pages/javaVariosTest.jsp" />
+	</definition>
+
 </tiles-definitions>

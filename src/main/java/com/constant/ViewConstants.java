@@ -9,6 +9,8 @@ public final class ViewConstants {
 	public static final String HTML_CSS_TEST = "htmlCssTest";
 	
 	public static final String JSTL_LIB_TEST = "jstlLibTest";
+
+	public static final String JAVA_VARIOS_TEST = "javaVariosTest";
 		
 	private ViewConstants() {
 	}

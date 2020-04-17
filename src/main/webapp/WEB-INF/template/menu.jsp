@@ -27,4 +27,11 @@
 		<c:otherwise><a href="${ctx}/htmlCssTest.html"><spring:message code="view.htmlCssTest" /></a></c:otherwise>
 	</c:choose>
 	--
+
+	<%-- PRUEBAS VARIAS DE JAVA Y LA VISTA --%>
+	<c:choose>
+		<c:when test="${view == 'javaVariosTest'}"><spring:message code="view.javaVariosTest" /></c:when>
+		<c:otherwise><a href="${ctx}/javaVariosTest.html"><spring:message code="view.javaVariosTest" /></a></c:otherwise>
+	</c:choose>
+	--
 </p>
